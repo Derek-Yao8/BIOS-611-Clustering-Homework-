@@ -65,15 +65,22 @@ ggplot(results, aes(x = side_length, y = k_hat, color = factor(n))) +
   geom_line(aes(y = true_k), linetype = "dashed", color = "black") +
   scale_x_reverse(breaks = 10:1) +
   labs(
-    title = "Gap Statistic Estimates vs. Cluster Separation",
+    title = "Gap Statistic Estimates vs. Separation of Clusters",
     subtitle = "Dashed line = true number of clusters",
-    x = "Side length (clusters move closer → right to left)",
-    y = "Estimated number of clusters (firstSEmax rule)",
-    color = "Dimension (true #clusters)"
-  ) +
-  theme_minimal(base_size = 13)
+    x = "Side length",
+    y = "Estimated number of clusters",
+    color = "Dimension (true # of clusters)"
+  ) + facet_wrap(~ n, nrow = 1) + 
+  theme(
+    axis.text.x = element_text(size = 11, color = "black"),
+    axis.text.y = element_text(size = 11, color = "black"),
+    axis.title.x = element_text(size = 13, face = "bold"),
+    axis.title.y = element_text(size = 13, face = "bold"),
+    axis.ticks = element_line(color = "black"),
+    panel.spacing = unit(1, "lines")
+  )
 
-
+ggsave("/home/rstudio/work/Gap_Statistic_Plots.png", width = 16, height = 5, units = "in", dpi = 300)
 
 
 
