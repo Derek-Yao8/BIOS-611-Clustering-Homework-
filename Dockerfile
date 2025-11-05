@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install/upgrade R packages for rendering
-RUN Rscript -e "install.packages(c('rmarkdown', 'dplyr', 'tidyverse', 'tidyr', 'ggplot2', 'cluster'), repos='https://cloud.r-project.org')"
+RUN Rscript -e "install.packages(c('rmarkdown', 'dplyr', 'tidyverse', 'tidyr', 'ggplot2', 'cluster', 'plotly'), repos='https://cloud.r-project.org')"
 
 # Default workdir
 WORKDIR /home/rstudio/work
